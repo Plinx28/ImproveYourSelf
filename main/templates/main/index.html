@@ -1,0 +1,35 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %} ImproveYS {% endblock %}
+
+{% block content %}
+    {% if articles %}
+        {% for article in page_obj %}
+            <div class="article">
+                <div class="article-content">
+                    <h2 class="article-title">{{ article.title }}</h2>
+                    <p class="article-text">{{ article.text|linebreaks|truncatechars:300 }}</p>
+                </div> 
+                <div class="article-date">{{ article.pub_date}}</div>  
+                <a class="article-read-btn" href="{{ article.get_absolute_url }}" >Read more</a>
+            </div>
+        {% endfor %}
+        <div class="pagination">
+            {% for page in paginator.page_range %}
+            {% if page_obj.number == page %}
+                <li class="page-num page-num-selected">{{ page }}</li>
+                {% elif page >= page_obj.number|add:-2 and page <= page_obj.number|add:2  %}
+            <li class="page-num">
+                <a href="?page={{ page }}">{{ page }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <p>There is no one article yet!</p>
+    {% endif %}
+
+    
+
+{% endblock %}

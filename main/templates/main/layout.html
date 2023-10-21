@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <link rel="stylesheet" href="{% static 'main/css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <div class="main-page">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="overlap-group">
+            <div class="aside">
+              <div class="logo">
+                <div class="div">
+                  <a href="{% url 'home' %}">
+                    <p class="just-improve">
+                      <span class="text-wrapper">Just</span><br>
+                      <span class="text-wrapper">Improve</span><br>
+                      <span class="text-wrapper">Yourself</span>
+                    </p>
+                    <img class="element-citycons" src="{% static 'main/img/1342935-citycons-mountain-successfull-top-icon-1.svg'%}" />
+                  </a>
+                </div>
+              </div>
+              <div class="menu">
+                <ul>
+                  <li><a href="{% url 'home' %}">Main page</a></li>
+                  <li><a href="{% url 'about' %}">About project</a></li>
+                  <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="overlap-2">
+            <div class="head">
+              <div class="overlap-3">
+                <div class="head-panel"></div>
+                <div class="user">
+                  <div class="overlap-group-2">
+                    <div class="text-wrapper-7">email</div>
+                    <div class="text-wrapper-8">выйти</div>
+                    <div class="text-wrapper-9">nickname</div>
+                    <div class="overlap-4">
+                      <div class="level-field"></div>
+                      <div class="text-wrapper-10">Level</div>
+                    </div>
+                    <div class="exp-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-wrapper-11">Some button</div>
+          </div>
+          {% block content%}
+          {% endblock %}
+        </div>
+      </div>
+      <footer>
+        <div class="text-wrapper-6">Producted by Konovalov Vyacheslav</div>
+      </footer>
+    </div>
+  </body>
+</html>
