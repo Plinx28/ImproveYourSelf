@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %} {{ article.title}} {% endblock %}
+
+{% block content %}
+<div class="article">
+    <div class="article-content">
+        <h2 class="article-title">{{ article.title}}</h2>
+        
+        <b><p class="article-text">{{ article.text|linebreaks }}</p></b>
+        <div class="article-date">{{ article.pub_date}}</div>
+        {% if article.image %}
+        <h3><img class="article-image" src="{{ article.image.url }}"></h3>
+        {% endif %}
+    </div> 
+</div>
+{% endblock %}
