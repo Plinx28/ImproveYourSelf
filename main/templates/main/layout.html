@@ -37,22 +37,27 @@
           <div class="overlap-2">
             <div class="head">
               <div class="overlap-3">
-                <div class="head-panel"></div>
-                <div class="user">
-                  <div class="overlap-group-2">
-                    <div class="text-wrapper-7">email</div>
-                    <div class="text-wrapper-8">выйти</div>
-                    <div class="text-wrapper-9">nickname</div>
-                    <div class="overlap-4">
-                      <div class="level-field"></div>
-                      <div class="text-wrapper-10">Level</div>
+                  <div class="head-panel"></div>
+                  <div class="user">
+                    <div class="overlap-group-2">
+                      {% if request.user.is_authenticated %}
+                      <div class="text-wrapper-7">{{ user.email}}</div>
+                      <div class="text-wrapper-8"><a href="{% url 'users:logout' %}">Logout</a></div>
+                      <div class="text-wrapper-9">{{ user.username }}</div>
+                      <div class="overlap-4">
+                        <div class="level-field"></div>
+                        <div class="text-wrapper-10">Level</div>
+                      </div>
+                      <div class="exp-bar"></div>
+                      {% endif %}
                     </div>
-                    <div class="exp-bar"></div>
-                  </div>
                 </div>
               </div>
             </div>
-            <div class="text-wrapper-11">Some button</div>
+            <div class="text-wrapper-11">
+              <li><a href="{% url 'users:register' %}">Sign up</a></li>
+              <li><a href="{% url 'users:login' %}">Sign in</a></li>
+            </div>
           </div>
           {% block content%}
           {% endblock %}
