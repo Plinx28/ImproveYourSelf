@@ -1,10 +1,11 @@
-from typing import Any
+from django.core.cache import cache
 from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from .models import Article
 from .utils import DataMixin
+
 
 class IndexView(DataMixin, ListView):
     template_name = 'main/index.html'
@@ -13,8 +14,14 @@ class IndexView(DataMixin, ListView):
     context_object_name = 'articles'
 
     def get_queryset(self):
-        """Return the last three published articles."""
-        return Article.objects.order_by("-pub_date")
+        articles_cache = cache.get('articles')
+
+        if articles_cache:
+            articles = articles_cache
+        else:
+            articles = Article.objects.order_by("-pub_date")
+            cache.set('articles', articles, 5 * 60)
+        return articles
 
 def aboutUsView(request):
     return render(request, 'main/about.html')
