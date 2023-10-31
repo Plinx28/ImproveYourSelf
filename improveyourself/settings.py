@@ -33,7 +33,8 @@ INSTALLED_APPS = [
 
     'main',
     'users',
-    'debug_toolbar'
+    'debug_toolbar',
+    'captcha'
 
 ]
 
