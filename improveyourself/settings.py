@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
-    'users'
+    'users',
+    'debug_toolbar'
+
 ]
 
 MIDDLEWARE = [
@@ -43,6 +45,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'improveyourself.urls'
@@ -112,3 +116,15 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_REDIRECT_URL = '/'
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, 'cache'),
+    }
+}
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
