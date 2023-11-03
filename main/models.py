@@ -1,17 +1,16 @@
 from django.db import models
 from django.urls import reverse
-
-# Create your models here.
+from users.models import Person
 
 class Article(models.Model):
     """ Модель статьи."""
     title = models.CharField(max_length=300)
     text = models.TextField()
     image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True)
-    pub_date = models.DateField(auto_created=True)
-    update_date = models.DateField(auto_now_add=True)
+    pub_date = models.DateField(auto_created=True, verbose_name='publication date')
+    update_date = models.DateField(auto_now_add=True, verbose_name='update date')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    # author_id = models.ForeignKey(on_delete=PROTECTED)
+    # author_username = models.ForeignKey('Person', on_delete=models.PROTECT)
 
     def __str__(self):
         return self.title

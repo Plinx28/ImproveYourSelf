@@ -24,9 +24,6 @@ class LoginUser(LoginView):
     template_name = 'users/login.html'
     success_url = reverse_lazy('home')
 
-    # def get_success_url(self) -> HttpResponse:
-    #     return reverse_lazy('home')
-
 
 def logout_user(request):
     logout(request)

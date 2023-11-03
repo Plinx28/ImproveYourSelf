@@ -1,7 +1,7 @@
 from django.core.cache import cache
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from .models import Article
@@ -44,3 +44,9 @@ class ArticleView(DetailView):
     model = Article
 
     slug_url_kwarg = 'article_slug'
+
+
+class CreateArticleView(CreateView):
+    template_name = 'main/create.html'
+    form_class = ''
+    success_url = reverse_lazy('home')
