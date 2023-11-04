@@ -1,13 +1,16 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.forms import CharField, EmailField, PasswordInput
+from django.forms import CharField, EmailField, PasswordInput, ChoiceField, DateField
 from django.contrib.auth.models import User
-from .models import Person
+from .utils import MyDateInput, GENDER_CHOICES
 
 
 class CustomUserCreationForm(UserCreationForm):
-
+    email = EmailField(max_length=250, label='E-mail')
+    gender = ChoiceField(choices=GENDER_CHOICES)
+    birth_date = DateField(label='Birthday', widget=MyDateInput())
+    
     class Meta:
-        model = Person
+        model = User
         fields = ('email', 'gender', 'first_name', 'last_name', 'birth_date', 'username', 'password1', 'password2', )
 
 
@@ -16,5 +19,5 @@ class LoginUserForm(AuthenticationForm):
     password = CharField(label='Password', widget=PasswordInput())
 
     class Meta:
-        model = Person
+        model = User
 
