@@ -1,19 +1,21 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}About us{% endblock %}
+{% block title %}Create article{% endblock %}
 
-{% block content %}
-    <div class="article">
-        <div class="article-content">
-            <h2 class="article-title">Create post</h2>
-            <form method="post">
-                {% csrf_token %}
-                <div>{{ form. }}</div>
-                {% for f in form %}
-                <p ><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
-                {% endfor %}
-                <a type="submit" class="article-read-btn"></a><button type="submit">Create post!</button></a>
-            </form>
-        </div> 
+{% block content%}
+<div class="article">
+    <div class="article-content">
+        <h2 class="article-title">Create article</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <div>{{ form.non_field_errors }}</div>
+            {% for f in form %}
+            <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+            
+            {% endfor %}
+            <a type="submit" class="article-read-btn"></a><button type="submit">Create post!</button></a>
+        </form>
     </div>
+</div>
 {% endblock %}

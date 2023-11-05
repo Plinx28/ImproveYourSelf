@@ -367,7 +367,7 @@ a.text:active, a.text:hover, a.text {
   margin-left: 10px;
   width: 100%;
   word-wrap: break-word;
-  line-height: 50px;
+  line-height: 20px;
 }
 
 .main-page .article .article-title {

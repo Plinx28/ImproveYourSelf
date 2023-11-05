@@ -11,7 +11,12 @@ class CustomUserCreationForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ('email', 'gender', 'first_name', 'last_name', 'birth_date', 'username', 'password1', 'password2', )
+        fields = ('email', 'gender', 'first_name', 'last_name', 'birth_date', 'username', 'password1', 'password2')
+        # widgets = {
+        #     'email': EmailField(max_length=250, label='E-mail'),
+        #     'gender': ChoiceField(choices=GENDER_CHOICES),
+        #     'birth_date': DateField(label='Birthday', widget=MyDateInput())
+        # }
 
 
 class LoginUserForm(AuthenticationForm):

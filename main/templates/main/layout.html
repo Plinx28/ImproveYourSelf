@@ -30,6 +30,9 @@
                   <li><a href="{% url 'home' %}">Main page</a></li>
                   <li><a href="{% url 'about' %}">About project</a></li>
                   <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                  {% if request.user.is_authenticated %}
+                  <li><a href="{% url 'create' %}">Create post</a></li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
