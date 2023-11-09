@@ -44,13 +44,19 @@
                   <div class="user">
                     <div class="overlap-group-2">
                       {% if request.user.is_authenticated %}
+                      <a href="{% url 'users:profile' user.pk %}">
                         <div class="text-wrapper-7">{{ user.email}}</div>
                         <div class="text-wrapper-9">{{ user.username }}</div>
                         <div class="overlap-4">
-                          <div class="level-field"></div>
-                          <div class="text-wrapper-10">Level</div>
+                          {% if user.profile.avatar %}
+                            <img class="avatar" src="{{ user.profile.avatar.url }}" height=55 width=55><br><br>
+                          {% else %}
+                            <img src="{% static 'media\images\profile\__default_user_avatar.svg' %}" height=100 width=100><br><br>
+                          {% endif %}
+                        <!-- <div class="text-wrapper-10"></div> -->
                         </div>
                         <div class="exp-bar"></div>
+                      </a>
                         <div class="text-wrapper-8"><a href="{% url 'users:logout' %}">Logout</a></div>
                       {% endif %}
                     </div>

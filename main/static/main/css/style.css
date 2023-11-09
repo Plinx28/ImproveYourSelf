@@ -289,7 +289,7 @@ a.text:active, a.text:hover, a.text {
   width: 72px;
   height: 55px;
   top: 12px;
-  left: 36px;
+  left: 32px;
 }
 
 .main-page .level-field {
@@ -320,10 +320,10 @@ a.text:active, a.text:hover, a.text {
 
 .main-page .exp-bar {
   position: absolute;
-  width: 75px;
+  width: 150px;
   height: 4px;
-  top: 73px;
-  left: 33px;
+  top: 55px;
+  left: 110px;
   background-color: #0fe4f2;
 }
 
@@ -519,4 +519,10 @@ li a:hover, li:hover{
 .form-input {
   background-color: #1D1D1D;
   color: white;
+}
+
+
+.avatar {
+  border-radius: 35px;
+  border: 1px solid #0fe4f2;
 }

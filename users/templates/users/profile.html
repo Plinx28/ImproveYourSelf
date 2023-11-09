@@ -1,11 +1,27 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}Sign up{% endblock %}
+{% block title %}My profile{% endblock %}
 
 {% block content%}
     <div class="article">
         <div class="article-content">
             <h2 class="article-title">My profile</h2>
+              <div class="card-body">
+                {% if user.profile.avatar %}
+                  <img src="{{ profile.avatar.url }}" height=100 width=100><br><br>
+                {% else %}
+                  <img src="{% static 'media\images\profile\__default_user_avatar.svg' %}" height=100 width=100><br><br>
+                {% endif %}
+                <p><strong>Username:</strong> {{ page_user }} </p><br><br>
+                <p><strong>First name:</strong> {{ user.first_name }} </p><br><br>
+                <p><strong>Last name:</strong> {{ user.last_name }}  </p><br><br>
+                {% if profile.gender %}
+                <p><strong>Instagram:</strong> {{ profile.gender }}</p><br><br>
+                {% endif %}
+                {% if profile.birth_date %}
+                <p><strong>Birth date:</strong> {{ profile.birth_date }} </p><br><br>
+                {% endif %}
+              </div>
         </div>
     </div>
 {% endblock %}
