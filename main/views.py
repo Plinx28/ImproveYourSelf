@@ -1,5 +1,4 @@
 from django.core.cache import cache
-from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, FormView, CreateView
@@ -23,7 +22,7 @@ class IndexView(DataMixin, ListView):
             articles = articles_cache
         else:
             articles = Article.objects.order_by("-pub_date")
-            cache.set('articles', articles, 5 * 60)
+            cache.set('articles', articles, 1 * 3)
         return articles
 
 
@@ -34,7 +33,6 @@ def aboutUsView(request):
 class ContactFormView(FormView):
     template_name = 'main/contacts.html'
     form_class = ContactForm
-    # success_url = reverse_lazy('home')
 
     def form_valid(self, form) -> HttpResponse:
         print(form.cleaned_data)
@@ -50,8 +48,8 @@ class ArticleView(DetailView):
 
 class CreateArticleView(LoginRequiredMixin, CreateView):
     template_name = 'main/create.html'
-    form_class = CreateArticleForm
     success_url = reverse_lazy('home')
+    form_class = CreateArticleForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user

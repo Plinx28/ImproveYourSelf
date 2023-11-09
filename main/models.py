@@ -1,5 +1,5 @@
-from django.db.models import Model, CASCADE, SET_DEFAULT
-from django.db.models import TextField, ImageField, CharField, SlugField, DateField, ForeignKey
+from django.db.models import Model, SET_DEFAULT
+from django.db.models import TextField, ImageField, CharField, SlugField, ForeignKey, DateTimeField
 from django.urls import reverse
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
@@ -9,10 +9,10 @@ class Article(Model):
     title = CharField(max_length=300)
     text = TextField()
     image = ImageField(upload_to='images/%Y/%m/%d/', blank=True)
-    pub_date = DateField(auto_now_add=True, verbose_name='publication date')
-    update_date = DateField(auto_now=True, verbose_name='update date')
+    pub_date = DateTimeField(auto_now_add=True, verbose_name='publication date')
+    update_date = DateTimeField(auto_now=True, verbose_name='update date')
     slug = SlugField(auto_created=True, max_length=255, unique=True, db_index=True, verbose_name="URL")
-    author = ForeignKey(to=User, default='admin', on_delete=SET_DEFAULT)
+    author = ForeignKey(to=User, default='Community', on_delete=SET_DEFAULT)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

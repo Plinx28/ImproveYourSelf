@@ -516,3 +516,7 @@ li a:hover, li:hover{
 }
 
 
+.form-input {
+  background-color: #1D1D1D;
+  color: white;
+}

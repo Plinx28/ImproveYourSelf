@@ -16,7 +16,7 @@ class CustomUserCreationForm(UserCreationForm):
         #     'email': EmailField(max_length=250, label='E-mail'),
         #     'gender': ChoiceField(choices=GENDER_CHOICES),
         #     'birth_date': DateField(label='Birthday', widget=MyDateInput())
-        # }
+        # } 
 
 
 class LoginUserForm(AuthenticationForm):
