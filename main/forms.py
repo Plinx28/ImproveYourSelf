@@ -1,11 +1,16 @@
 from django.forms import CharField, Textarea
-from django import forms
+from django.forms import Textarea, TextInput, ModelForm, Form, ImageField
 from captcha.fields import CaptchaField
+from .models import Article
 
-class ContactForm(forms.Form):
+class ContactForm(Form):
     name = CharField(max_length=150)
-    content = CharField(widget=Textarea(attrs={'cols': 60, 'rows': 10}))
+    content = CharField(widget=Textarea(attrs={'cols': 80, 'rows': 15}))
     captcha = CaptchaField()
-    
 
+
+class CreateArticleForm(ModelForm):
+    class Meta:
+        model = Article
+        fields = ('title', 'text', 'image')
 

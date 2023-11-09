@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}Sign up{% endblock %}
+
+{% block content%}
+    <div class="article">
+        <div class="article-content">
+            <h2 class="article-title">Update profile</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <button type="submit">Save changes</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

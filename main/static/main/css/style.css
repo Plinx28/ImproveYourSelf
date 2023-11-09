@@ -289,7 +289,11 @@ a.text:active, a.text:hover, a.text {
   width: 72px;
   height: 55px;
   top: 12px;
+<<<<<<< HEAD
   left: 36px;
+=======
+  left: 32px;
+>>>>>>> a1447a2d7b5d8d80536bc9a825b6ba3c864d9e42
 }
 
 .main-page .level-field {
@@ -320,10 +324,17 @@ a.text:active, a.text:hover, a.text {
 
 .main-page .exp-bar {
   position: absolute;
+<<<<<<< HEAD
   width: 75px;
   height: 4px;
   top: 73px;
   left: 33px;
+=======
+  width: 150px;
+  height: 4px;
+  top: 55px;
+  left: 110px;
+>>>>>>> a1447a2d7b5d8d80536bc9a825b6ba3c864d9e42
   background-color: #0fe4f2;
 }
 
@@ -367,6 +378,10 @@ a.text:active, a.text:hover, a.text {
   margin-left: 10px;
   width: 100%;
   word-wrap: break-word;
+<<<<<<< HEAD
+=======
+  line-height: 20px;
+>>>>>>> a1447a2d7b5d8d80536bc9a825b6ba3c864d9e42
 }
 
 .main-page .article .article-title {
@@ -515,3 +530,16 @@ li a:hover, li:hover{
 }
 
 
+<<<<<<< HEAD
+=======
+.form-input {
+  background-color: #1D1D1D;
+  color: white;
+}
+
+
+.avatar {
+  border-radius: 35px;
+  border: 1px solid #0fe4f2;
+}
+>>>>>>> a1447a2d7b5d8d80536bc9a825b6ba3c864d9e42

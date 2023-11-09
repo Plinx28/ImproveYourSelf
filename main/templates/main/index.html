@@ -11,7 +11,7 @@
                     <p class="article-text">{{ article.text|linebreaks|truncatechars:300 }}</p>
                 </div> 
                 <div class="article-date">{{ article.pub_date}}</div>  
-                <a class="article-read-btn" href="{{ article.get_absolute_url }}" >Read more</a>
+                <a class="article-read-btn" href="{{ article.get_absolute_url }}">Read more</a>
             </div>
         {% endfor %}
         <div class="pagination">
@@ -24,7 +24,6 @@
             </li>
             {% endif %}
             {% endfor %}
-
         </div>
     {% else %}
         <p>There is no one article yet!</p>

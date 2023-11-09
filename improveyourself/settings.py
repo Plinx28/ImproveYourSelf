@@ -30,11 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django_extensions',
+    
     'main',
     'users',
     'debug_toolbar',
-    'captcha'
+    'captcha',
+    
 
 ]
 
@@ -49,6 +51,11 @@ MIDDLEWARE = [
 
     "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = [
+    'django.contrib.messages.context_processors.messages'
+]
+
 
 ROOT_URLCONF = 'improveyourself.urls'
 
@@ -100,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -129,3 +137,6 @@ CACHES = {
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+
+# AUTH_USER_MODEL = 'users.Person' # mb working

@@ -1,17 +1,22 @@
-from django.db import models
+from django.db.models import Model, SET_DEFAULT
+from django.db.models import TextField, ImageField, CharField, SlugField, ForeignKey, DateTimeField
 from django.urls import reverse
+from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
-# Create your models here.
-
-class Article(models.Model):
+class Article(Model):
     """ Модель статьи."""
-    title = models.CharField(max_length=300)
-    text = models.TextField()
-    image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True)
-    pub_date = models.DateField(auto_created=True)
-    update_date = models.DateField(auto_now_add=True)
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    # author_id = models.ForeignKey(on_delete=PROTECTED)
+    title = CharField(max_length=300)
+    text = TextField()
+    image = ImageField(upload_to='images/%Y/%m/%d/', blank=True)
+    pub_date = DateTimeField(auto_now_add=True, verbose_name='publication date')
+    update_date = DateTimeField(auto_now=True, verbose_name='update date')
+    slug = SlugField(auto_created=True, max_length=255, unique=True, db_index=True, verbose_name="URL")
+    author = ForeignKey(to=User, default='Community', on_delete=SET_DEFAULT)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

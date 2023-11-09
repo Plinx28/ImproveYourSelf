@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}Create article{% endblock %}
+
+{% block content%}
+<div class="article">
+    <div class="article-content">
+        <h2 class="article-title">Create article</h2>
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            {{ form.as_p }}
+            <button type="submit">Submit New Post</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
