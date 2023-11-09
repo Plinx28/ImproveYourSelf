@@ -30,11 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django_extensions',
+    
     'main',
     'users',
     'debug_toolbar',
-    'captcha'
+    'captcha',
+    
 
 ]
 
@@ -49,6 +51,11 @@ MIDDLEWARE = [
 
     "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = [
+    'django.contrib.messages.context_processors.messages'
+]
+
 
 ROOT_URLCONF = 'improveyourself.urls'
 

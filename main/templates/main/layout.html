@@ -44,14 +44,14 @@
                   <div class="user">
                     <div class="overlap-group-2">
                       {% if request.user.is_authenticated %}
-                      <div class="text-wrapper-7">{{ user.email}}</div>
-                      <div class="text-wrapper-8"><a href="{% url 'users:logout' %}">Logout</a></div>
-                      <div class="text-wrapper-9">{{ user.username }}</div>
-                      <div class="overlap-4">
-                        <div class="level-field"></div>
-                        <div class="text-wrapper-10">Level</div>
-                      </div>
-                      <div class="exp-bar"></div>
+                        <div class="text-wrapper-7">{{ user.email}}</div>
+                        <div class="text-wrapper-9">{{ user.username }}</div>
+                        <div class="overlap-4">
+                          <div class="level-field"></div>
+                          <div class="text-wrapper-10">Level</div>
+                        </div>
+                        <div class="exp-bar"></div>
+                        <div class="text-wrapper-8"><a href="{% url 'users:logout' %}">Logout</a></div>
                       {% endif %}
                     </div>
                 </div>

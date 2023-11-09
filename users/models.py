@@ -1,28 +1,24 @@
-# from django.db.models import Model, CASCADE, OneToOneField, DateField, CharField, EmailField
-# from django.urls import reverse
-# from django.contrib.auth.models import User
-# from django.db.models.signals import post_save
-# from django.dispatch import receiver
+from django.db.models import Model, CASCADE, OneToOneField, DateField, CharField, ImageField
+from django.urls import reverse
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .utils import GENDER_CHOICES
 
-# class Person(Model):
-#     GENDER_CHOICES = (
-#         ('M', 'Male'),
-#         ('F', 'Female')
-#     )
+class Profile(Model):
+    user = OneToOneField(User, on_delete=CASCADE)
+    avatar = ImageField(null=True, blank=True, upload_to="images/profile/")
+    birth_date = DateField(null=True, verbose_name='birthday date', blank=True)
+    gender = CharField(choices=GENDER_CHOICES, max_length=1, blank=True)
 
-#     user = OneToOneField(User, on_delete=CASCADE)
-#     birth_date = DateField(null=True, verbose_name='birthday date')
-#     gender = CharField(choices=GENDER_CHOICES, max_length=1)
-
-#     def __str__(self):
-#         return self.user
+    def __str__(self):
+        return self.user.username
     
-# @receiver(post_save, sender=User)
-# def create_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Person.objects.create(user=instance)
-#     instance.profile.save()
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
-# @receiver(post_save, sender=User)
-# def save_profile(sender, instance, **kwargs):
-#     instance.profile.save()
+@receiver(post_save, sender=User) 
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
