@@ -524,5 +524,7 @@ li a:hover, li:hover{
 
 .avatar {
   border-radius: 35px;
-  border: 1px solid #0fe4f2;
+  border: 2px solid #0fe4f2;
+  width: 65px;
+  height: 65px;
 }

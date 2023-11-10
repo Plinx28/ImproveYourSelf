@@ -32,6 +32,7 @@
                   <li><a href="{% url 'contacts' %}">Contacts</a></li>
                   {% if request.user.is_authenticated %}
                   <li><a href="{% url 'create' %}">Create post</a></li>
+                  <li><a href="{% url 'users:profile' user.pk %}">My profile</a></li>
                   {% endif %}
                 </ul>
               </div>
@@ -51,7 +52,7 @@
                           {% if user.profile.avatar %}
                             <img class="avatar" src="{{ user.profile.avatar.url }}" height=55 width=55><br><br>
                           {% else %}
-                            <img src="{% static 'media\images\profile\__default_user_avatar.svg' %}" height=100 width=100><br><br>
+                            <img class="avatar" src="{% static 'users/img/__default_user_avatar.png'%}" height=100 width=100><br><br>
                           {% endif %}
                         <!-- <div class="text-wrapper-10"></div> -->
                         </div>
