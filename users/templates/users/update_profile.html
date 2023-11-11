@@ -1,16 +1,21 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}Sign up{% endblock %}
+{% block title %}Edit profile{% endblock %}
 
 {% block content%}
     <div class="article">
         <div class="article-content">
             <h2 class="article-title">Update profile</h2>
-            <form method="post">
+            <form enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
-                {{ user_form.as_p }}
-                {{ profile_form.as_p }}
-                <button type="submit">Save changes</button>
+                {% if profile.avatar %}
+                  <img src="{{ profile.avatar.url }}" height=100 width=100><br><br>
+                {% endif %}
+
+                {{ user_form.as_p }} 
+                {{ profile_form.as_p }} <br><br> 
+                
+                <button class="default-btn-project" type="submit">Save changes</button><br><br>
             </form>
         </div>
     </div>

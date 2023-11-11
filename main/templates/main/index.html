@@ -8,10 +8,14 @@
             <div class="article">
                 <div class="article-content">
                     <h2 class="article-title">{{ article.title }}</h2>
-                    <p class="article-text">{{ article.text|linebreaks|truncatechars:300 }}</p>
+                    <p class="article-text">{{ article.text|linebreaks|truncatechars:100 }}</p><br>
                 </div> 
-                <div class="article-date">{{ article.pub_date}}</div>  
-                <a class="article-read-btn" href="{{ article.get_absolute_url }}">Read more</a>
+                <div class="article-date">
+                    <p>{{ article.pub_date }}</p> 
+                </div> 
+            </div>
+            <div class="read-more-btn">
+                <a class="default-btn-project" href="{{ article.get_absolute_url }}">Read more</a>
             </div>
         {% endfor %}
         <div class="pagination">

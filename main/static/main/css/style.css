@@ -259,7 +259,7 @@ a.text:active, a.text:hover, a.text {
   position: absolute;
   width: 142px;
   top: 102px;
-  left: 158px;
+  left: 130px;
   font-family: "Inter", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -331,7 +331,7 @@ a.text:active, a.text:hover, a.text {
   position: absolute;
   width: 178px;
   top: 26px;
-  left: 943px;
+  left: 1440px;
   font-family: "Inter", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -358,7 +358,8 @@ a.text:active, a.text:hover, a.text {
 }
 .main-page .article img.article-image {
   max-width: 750px;
-	height: auto;
+  max-height: 1080px;
+	/* height: auto; */
   padding: 20px;
 }
 
@@ -385,22 +386,26 @@ a.text:active, a.text:hover, a.text {
   position: absolute;
   margin-left: 5%;
   text-align: center;
-  bottom: 5px;
+  bottom: 15px;
 }
 
-.main-page .article .article-read-btn {
-  margin-left: 85%;
-  bottom: 10%;
+a .default-btn-project{
+  text-decoration: none;
+}
+
+.default-btn-project {
+  margin-left: 1%;
   position: absolute;
+  background-color: #1D1D1D;
 }
 
-.article-read-btn {
+.default-btn-project {
   color: #ffffff;
   font-size: 18px;
   transition: transform .32s ease;
 }
 
-.article-read-btn:hover {
+.default-btn-project:hover {
   color: #0fe4f2;
   transform: scale(1.1);
 }
@@ -440,19 +445,8 @@ a.text:active, a.text:hover, a.text {
   margin-left: 20px;
 }
 
-
-.article .overlap-5 .read-more-btn {
-  font-family: "Inter", Helvetica;
-  float: right;
-  position: absolute;
-  bottom: 10px;
-  left: 570px;
-  color: #ffffff;
-  transition: transform .32s ease;
-}
-
-.article .overlap-5 .read-more-btn:hover {
-  transform: scale(1.10);
+.read-more-btn {
+  margin-left: 55%;
 }
 
 .main-page .overlap-group-3 {

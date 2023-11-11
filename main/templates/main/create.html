@@ -6,11 +6,10 @@
 <div class="article">
     <div class="article-content">
         <h2 class="article-title">Create article</h2>
-        <form enctype="multipart/form-data" method="post">
+        <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}" />
-            {{ form.as_p }}
-            <button type="submit">Submit New Post</button>
+            {{ form.as_p }} <br>
+            <button class="default-btn-project" type="submit">Submit New Post</button><br>
         </form>
     </div>
 </div>

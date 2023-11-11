@@ -6,11 +6,10 @@
 <div class="article">
     <div class="article-content">
         <h2 class="article-title">{{ article.title}}</h2>
-        
-        <b><p class="article-text">{{ article.text|linebreaks }}</p></b>
+        <b><p class="article-text">{{ article.text|linebreaks }}</p></b><br>
         <div class="article-date">{{ article.pub_date }}. Author: {{ article.author.username}}</div>
         {% if article.image %}
-        <h3><img class="article-image" src="{{ article.image.url }}"></h3>
+        <h3><img class="article-image" src="{{ article.image.url }}"></h3><br>
         {% endif %}
     </div> 
 </div>

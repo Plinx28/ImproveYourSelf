@@ -11,10 +11,10 @@
             <input type="hidden" name="next" value="{{ next }}" />
             <div>{{ form.non_field_errors }}</div>
             {% for f in form %}
-            <p class="form-input"><label for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+            <p class="form-input"><label for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p><br>
             <div class="form-error">{{ f.errors }}</div>
-            {% endfor %}
-            <a type="submit" class="article-read-btn"></a><button type="submit">Sign in</button></a>
+            {% endfor %} <br>
+            <button class="default-btn-project" type="submit">Sign in</button>
         </form>
     </div>
 </div>

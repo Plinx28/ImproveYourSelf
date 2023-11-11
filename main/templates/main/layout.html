@@ -58,15 +58,17 @@
                         </div>
                         <div class="exp-bar"></div>
                       </a>
-                        <div class="text-wrapper-8"><a href="{% url 'users:logout' %}">Logout</a></div>
+                        <div class="text-wrapper-8"><a class="default-btn-project" href="{% url 'users:logout' %}">Logout</a></div>
                       {% endif %}
                     </div>
                 </div>
               </div>
             </div>
             <div class="text-wrapper-11">
-              <li><a href="{% url 'users:register' %}">Sign up</a></li>
-              <li><a href="{% url 'users:login' %}">Sign in</a></li>
+              {% if not request.user.is_authenticated %}
+              <a class="default-btn-project" href="{% url 'users:register' %}">Sign up</a><br><br>
+              <a class="default-btn-project" href="{% url 'users:login' %}">Sign in</a>
+              {% endif %}
             </div>
           </div>
           {% block content%}

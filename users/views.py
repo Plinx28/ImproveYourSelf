@@ -49,18 +49,18 @@ class ProfileView(DetailView):
 def update_profile(request):
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
-        profile_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile was successfully updated!')
-            return redirect('settings:profile')
+            return redirect('users:update_profile')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
-    return render(request, 'users/profile.html', {
+    return render(request, 'users/update_profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
     })

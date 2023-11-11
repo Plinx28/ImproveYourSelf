@@ -21,6 +21,9 @@
                 {% if profile.birth_date %}
                 <p><strong>Birth date:</strong> {{ profile.birth_date }} </p><br><br>
                 {% endif %}
+                {% if user.id == profile.user.id %}
+                <a class="default-btn-project" href="{% url 'users:update_profile' %}">Edit profile</a><br>
+                {% endif %}
               </div>
         </div>
     </div>
