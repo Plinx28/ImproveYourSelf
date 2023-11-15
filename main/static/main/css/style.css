@@ -393,10 +393,13 @@ a .default-btn-project{
   text-decoration: none;
 }
 
+.btn {
+  background-color: #1D1D1D;
+}
+
 .default-btn-project {
   margin-left: 1%;
   position: absolute;
-  background-color: #1D1D1D;
 }
 
 .default-btn-project {
@@ -446,7 +449,7 @@ a .default-btn-project{
 }
 
 .read-more-btn {
-  margin-left: 55%;
+  margin-left: 53%;
 }
 
 .main-page .overlap-group-3 {
@@ -489,23 +492,15 @@ a .default-btn-project{
 
 }
 
-/* li a{
-  display: inline;
-  text-decoration: none;
-  transition: transform .32s ease;
-  color: white;
-}
+.btn-back-home {
 
-li a:hover, li:hover{
-  transform: scale(1.10);
-  color: #0fe4f2;
-} */
+}
 
 .page-num {
   display: inline;
 }
 
-.page-num .page-num-selected li a {
+.page-num .page-num-selected {
   color: #0fe4f2;
 }
 
@@ -516,9 +511,35 @@ li a:hover, li:hover{
 }
 
 
+.card-body {
+  white-space: nowrap;
+  width: 500px;
+}
+
+
 .avatar {
   border-radius: 35px;
   border: 2px solid #0fe4f2;
   width: 65px;
   height: 65px;
 }
+
+
+.profile-features {
+  /* white-space: normal;	 */
+	display: inline-block;
+	width: 48%;
+	/* vertical-align: top; */
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.user-info {
+  white-space: normal;	
+	display: inline-block;
+	width: 48%;
+	vertical-align: top;
+}
+/* .btn-my-articles {
+
+} */

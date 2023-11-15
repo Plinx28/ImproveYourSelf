@@ -3,7 +3,7 @@
 {% block title %} ImproveYS {% endblock %}
 
 {% block content %}
-    {% if articles %}
+    {% if page_obj %}
         {% for article in page_obj %}
             <div class="article">
                 <div class="article-content">
@@ -15,19 +15,21 @@
                 </div> 
             </div>
             <div class="read-more-btn">
-                <a class="default-btn-project" href="{{ article.get_absolute_url }}">Read more</a>
+                <a class="default-btn-project" href="{{ article.get_absolute_url }}">Read more →</a>
             </div>
         {% endfor %}
         <div class="pagination">
-            {% for page in paginator.page_range %}
-            {% if page_obj.number == page %}
-                <li class="page-num page-num-selected">{{ page }}</li>
-                {% elif page >= page_obj.number|add:-2 and page <= page_obj.number|add:2  %}
-            <li class="page-num">
-                <a href="?page={{ page }}">{{ page }}</a>
-            </li>
+            {% if page_obj.has_other_pages %}
+                {% for page in page_obj.paginator.page_range %}
+                {% if page_obj.number == page %}
+                    <li class="page-num page-num-selected">{{ page }}</li>
+                    {% elif page >= page_obj.number|add:-2 and page <= page_obj.number|add:2  %}
+                <li class="page-num">
+                    <a href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
             {% endif %}
-            {% endfor %}
         </div>
     {% else %}
         <p>There is no one article yet!</p>

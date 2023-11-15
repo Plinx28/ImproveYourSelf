@@ -25,7 +25,7 @@ class Profile(Model):
     class Meta:
         verbose_name = 'Profile'
         verbose_name_plural = 'Profiles'
-        ordering = ['user']
+        ordering = ('user', )
     
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

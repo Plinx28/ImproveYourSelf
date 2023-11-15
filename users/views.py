@@ -1,17 +1,20 @@
 from typing import Any
+from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.db import transaction
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 from django.contrib import messages
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect
 
 from .forms import CustomUserCreationForm, LoginUserForm, UserUpdateForm, ProfileUpdateForm
 from .models import Profile
+from main.models import Article
+from main.utils import DataMixin
 
 
 class RegisterUser(CreateView):
@@ -37,12 +40,22 @@ class ProfileView(DetailView):
     model = Profile
     template_name = 'users/profile.html'
 
-    def get_context_data(self, *args, **kwargs: Any):
-        context = super(ProfileView, self).get_context_data(*args, **kwargs)
-        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
-        context['page_user'] = page_user
-        return context
+    def get_context_data(self, *args, **kwargs: Any):        
+        context = super().get_context_data(**kwargs)
+        return dict(context.items())
 
+    
+def articles_of_user(request, *args, **kwargs):
+    articles = Article.objects.filter(author=request.user).order_by("-pub_date")
+    paginator = Paginator(articles, 6)
+
+    page_range = request.GET.get('page')
+    page_obj = paginator.get_page(page_range)
+
+    context = {
+        'page_obj': page_obj,
+    }
+    return render(request, 'main/index.html', context)
 
 @login_required
 @transaction.atomic

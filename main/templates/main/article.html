@@ -5,6 +5,7 @@
 {% block content %}
 <div class="article">
     <div class="article-content">
+        <a class="default-btn-project" href="{{request.META.HTTP_REFERER}}">← Back</a>
         <h2 class="article-title">{{ article.title}}</h2>
         <b><p class="article-text">{{ article.text|linebreaks }}</p></b><br>
         <div class="article-date">{{ article.pub_date }}. Author: {{ article.author.username}}</div>

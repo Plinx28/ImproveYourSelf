@@ -1,29 +1,39 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}Profile {{ page_user }} {% endblock %}
+{% block title %} Profile {{ profile }} {% endblock %}
 
 {% block content%}
     <div class="article">
         <div class="article-content">
             <h2 class="article-title">Profile</h2>
               <div class="card-body">
-                {% if profile.avatar %}
-                  <img src="{{ profile.avatar.url }}" height=100 width=100><br><br>
-                {% else %}
-                  <img src="{% static 'users/img/__default_user_avatar.png'%}" height=100 width=100><br><br>
-                {% endif %}
-                <p><strong>Username:</strong> {{ page_user }} </p><br><br>
-                <p><strong>First name:</strong> {{ profile.user.first_name }} </p><br><br>
-                <p><strong>Last name:</strong> {{ profile.user.last_name }}  </p><br><br>
-                {% if profile.gender %}
-                <p><strong>Gender:</strong> {{ profile.gender }}</p><br><br>
-                {% endif %}
-                {% if profile.birth_date %}
-                <p><strong>Birth date:</strong> {{ profile.birth_date }} </p><br><br>
-                {% endif %}
-                {% if user.id == profile.user.id %}
-                <a class="default-btn-project" href="{% url 'users:update_profile' %}">Edit profile</a><br>
-                {% endif %}
+                <div class="user-info">
+                  {% if profile.avatar %}
+                    <img src="{{ profile.avatar.url }}" height=100 width=100><br><br>
+                  {% else %}
+                    <img src="{% static 'users/img/__default_user_avatar.png'%}" height=100 width=100><br><br>
+                  {% endif %}
+                  <p><strong>Username:</strong> {{ profile }} </p><br><br>
+                  <p><strong>First name:</strong> {{ profile.user.first_name }} </p><br><br>
+                  <p><strong>Last name:</strong> {{ profile.user.last_name }}  </p><br><br>
+                  {% if profile.gender %}
+                  <p><strong>Gender:</strong> {{ profile.gender }}</p><br><br>
+                  {% endif %}
+                  {% if profile.birth_date %}
+                  <p><strong>Birth date:</strong> {{ profile.birth_date }} </p><br><br>
+                  {% endif %}
+                  {% if user.id == profile.user.id %}
+                  <a class="default-btn-project" href="{% url 'users:update_profile' %}">Edit profile</a><br>
+                  {% endif %}
+                </div>
+                <div class="profile-features">
+                  <h2 class="article-title">Capabilities</h2><br>
+                  <a class="default-btn-project" href="{% url 'users:my_articles' %}">My articles</a><br><br>
+                  <a class="default-btn-project" href="{% url 'home' %}">Something else</a><br><br>
+                  <a class="default-btn-project" href="{% url 'home' %}">Something else</a><br><br>
+                  <a class="default-btn-project" href="{% url 'home' %}">Something else</a><br><br>
+                  <a class="default-btn-project" href="{% url 'home' %}">Something else</a><br><br>
+                </div>
               </div>
         </div>
     </div>

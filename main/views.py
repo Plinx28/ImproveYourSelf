@@ -22,7 +22,7 @@ class IndexView(DataMixin, ListView):
             articles = articles_cache
         else:
             articles = Article.objects.order_by("-pub_date")
-            cache.set('articles', articles, 1 * 3)
+            cache.set('articles', articles, 1 * 5)
         return articles
 
 
