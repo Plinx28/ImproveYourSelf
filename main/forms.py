@@ -1,5 +1,4 @@
-from django.forms import CharField, Textarea
-from django.forms import Textarea, ModelForm, Form
+from django.forms import Form, Textarea, ModelForm, CharField
 from captcha.fields import CaptchaField
 from .models import Article
 

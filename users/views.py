@@ -1,9 +1,9 @@
 from typing import Any
-from django.core.paginator import Paginator, EmptyPage
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.db import transaction
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView
 from django.contrib import messages
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
@@ -14,7 +14,6 @@ from django.shortcuts import redirect
 from .forms import CustomUserCreationForm, LoginUserForm, UserUpdateForm, ProfileUpdateForm
 from .models import Profile
 from main.models import Article
-from main.utils import DataMixin
 
 
 class RegisterUser(CreateView):

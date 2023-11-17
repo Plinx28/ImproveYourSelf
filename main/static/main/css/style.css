@@ -492,12 +492,10 @@ a .default-btn-project{
 
 }
 
-.btn-back-home {
-
-}
 
 .page-num {
   display: inline;
+  color: white;
 }
 
 .page-num .page-num-selected {
@@ -526,10 +524,8 @@ a .default-btn-project{
 
 
 .profile-features {
-  /* white-space: normal;	 */
 	display: inline-block;
 	width: 48%;
-	/* vertical-align: top; */
   margin-top: 50px;
   margin-left: 100px;
 }
@@ -540,6 +536,3 @@ a .default-btn-project{
 	width: 48%;
 	vertical-align: top;
 }
-/* .btn-my-articles {
-
-} */

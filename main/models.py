@@ -1,4 +1,4 @@
-from django.db.models import Model, SET_DEFAULT
+from django.db.models import Model, SET_DEFAULT, CASCADE
 from django.db.models import TextField, ImageField, CharField, SlugField, ForeignKey, DateTimeField
 from django.urls import reverse
 from django.template.defaultfilters import slugify
@@ -28,3 +28,9 @@ class Article(Model):
         verbose_name = 'Articles'
         verbose_name_plural = 'Articles'
         ordering = ['-pub_date', 'title']
+
+class Comment(Model):
+    """Модель комментариев."""
+    author = ForeignKey(to=User, on_delete=CASCADE)
+    text = TextField()
+    date = DateTimeField(auto_now_add=True)

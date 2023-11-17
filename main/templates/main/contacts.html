@@ -10,9 +10,9 @@
                 {% csrf_token %}
                 <div>{{ form.non_field_errors }}</div>
                 {% for f in form %}
-                <p><label class="form-input" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
+                <p><label class="form-input" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p><br>
                 {% endfor %}
-                <a type="submit" class="article-read-btn"></a><button type="submit">Send mail</button></a>
+                <button class="btn default-btn-project" type="submit">Send mail</button><br>
             </form>
         </div> 
     </div>
