@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}Delete ❌ article{% endblock %}
+
+{% block content %}
+    <div class="article">
+        <div class="article-content">
+            <a class="default-btn-project" href="{{request.META.HTTP_REFERER}}">← Back</a><br>
+            <h2 class="article-title">Are you sure that you want to delete article?</h2>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn default-btn-project" type="submit">Yes</button><br>
+            </form>
+        </div> 
+    </div>
+{% endblock %}

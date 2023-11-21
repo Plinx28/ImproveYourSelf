@@ -11,10 +11,9 @@
         <div class="article-date">{{ article.pub_date }}. Author: {{ article.author.username}}</div>
         {% if user == article.author %}
         <div class="article-copability">
-            <ul>
-                <li><a class="default-btn-project" href="{% url 'edit_article' article.slug %}">Edit✏️</a></li><br>
-                <li><a class="default-btn-project" href="">Delete❌</a></li>
-            </ul>
+            <ul></ul>
+            <li><a class="default-btn-project" href="{% url 'edit_article' article.slug %}">Edit✏️</a></li>
+            <li><a class="default-btn-project" href="{% url 'delete_article' article.slug %}">Delete❌</a></li>
         </div><br>
         {% endif %}
         {% if article.image %}

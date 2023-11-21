@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.db import transaction
 from django.urls import reverse_lazy
@@ -6,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
-from django.views.generic import ListView, DetailView, FormView, CreateView
+from django.views.generic import ListView, DetailView, FormView, CreateView, DeleteView
 
 from .models import Article
 from .utils import DataMixin
@@ -67,20 +68,38 @@ class CreateArticleView(LoginRequiredMixin, CreateView):
 @login_required
 @transaction.atomic
 def edit_article_view(request, article_slug):
-    instance = get_object_or_404(Article, slug=article_slug)
+    article = get_object_or_404(Article, slug=article_slug)
+    if not request.user == article.author:
+        raise PermissionDenied("You don't have permisson to change foreign articles.")
+    
     if request.method == 'POST':
-        article_form = CreateArticleForm(request.POST, request.FILES, instance=instance)
+        article_form = CreateArticleForm(request.POST, request.FILES, instance=article)
         if article_form.is_valid():
             article_form.save()
             messages.success(request, 'Your article was successfully updated!')
-            return redirect(f'/{instance.slug}')
+            return redirect(f'/{article.slug}')
         else:
             messages.error(request, 'Please correct the error.')
     else:
-        article_form = CreateArticleForm(instance=instance)
+        article_form = CreateArticleForm(instance=article)
     return render(request, 'main/create.html', {
         'form': article_form,
         'action': 'Edit'
     })
 
 
+class DeleteArticleView(DeleteView):
+    model = Article
+    template_name = 'main/delete_article.html'
+
+    slug_url_kwarg = 'article_slug'
+
+    def post(self, request, article_slug) -> HttpResponse:
+        article = get_object_or_404(Article, slug=article_slug)
+
+        if not request.user == article.author:
+            raise PermissionDenied("You don't have permisson to change foreign articles.")
+        
+        article.delete()
+        return redirect('users:my_articles')
+    
