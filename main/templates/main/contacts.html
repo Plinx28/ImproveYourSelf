@@ -5,6 +5,7 @@
 {% block content %}
     <div class="article">
         <div class="article-content">
+            <a class="default-btn-project" href="{{request.META.HTTP_REFERER}}">← Back</a><br>
             <h2 class="article-title">Contact us</h2>
             <form method="post">
                 {% csrf_token %}

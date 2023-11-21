@@ -1,14 +1,22 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %} {{ article.title}} {% endblock %}
+{% block title %} {{ article.title }} {% endblock %}
 
 {% block content %}
 <div class="article">
     <div class="article-content">
         <a class="default-btn-project" href="{{request.META.HTTP_REFERER}}">← Back</a>
-        <h2 class="article-title">{{ article.title}}</h2>
+        <h2 class="article-title">{{ article.title}}</h2>        
         <b><p class="article-text">{{ article.text|linebreaks }}</p></b><br>
         <div class="article-date">{{ article.pub_date }}. Author: {{ article.author.username}}</div>
+        {% if user == article.author %}
+        <div class="article-copability">
+            <ul>
+                <li><a class="default-btn-project" href="{% url 'edit_article' article.slug %}">Edit✏️</a></li><br>
+                <li><a class="default-btn-project" href="">Delete❌</a></li>
+            </ul>
+        </div><br>
+        {% endif %}
         {% if article.image %}
         <h3><img class="article-image" src="{{ article.image.url }}"></h3><br>
         {% endif %}

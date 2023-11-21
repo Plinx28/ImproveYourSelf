@@ -68,7 +68,7 @@ def update_profile(request):
             messages.success(request, 'Your profile was successfully updated!')
             return redirect('users:update_profile')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Please correct the error.')
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)

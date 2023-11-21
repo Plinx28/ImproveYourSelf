@@ -1,15 +1,16 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% block title %}Create article{% endblock %}
+{% block title %}{{ action }} article{% endblock %}
 
 {% block content%}
 <div class="article">
     <div class="article-content">
-        <h2 class="article-title">Create article</h2>
+        <a class="default-btn-project" href="{{request.META.HTTP_REFERER}}">← Back</a><br>
+        <h2 class="article-title">{{ action }} article</h2>
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {{ form.as_p }} <br>
-            <button class="btn default-btn-project" type="submit">Submit New Post</button><br>
+            <button class="btn default-btn-project" type="submit">{{ action }} Post</button><br>
         </form>
     </div>
 </div>
